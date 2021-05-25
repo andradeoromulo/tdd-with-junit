@@ -1,4 +1,4 @@
-package com.example.tdd;
+package com.example.tdd.model;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -17,6 +17,10 @@ public class Employee {
         this.grossPay = grossPay;
     }
 
+    public BigDecimal getGrossPay() {
+        return grossPay;
+    }
+
     public BigDecimal getNetPay() {
 
         BigDecimal deductions = calculateDeductions();
@@ -31,5 +35,12 @@ public class Employee {
             return new BigDecimal("0.3");
 
         return new BigDecimal("0.2");
+    }
+
+    public void applySalaryAdjustment(Performance performance) {
+
+        BigDecimal adjustment = grossPay.multiply(performance.getAdjustmentPercent());
+        this.grossPay = grossPay.add(adjustment).setScale(2, RoundingMode.HALF_UP);
+
     }
 }
