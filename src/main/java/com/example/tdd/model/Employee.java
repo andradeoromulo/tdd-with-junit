@@ -18,13 +18,14 @@ public class Employee {
     }
 
     public BigDecimal getGrossPay() {
-        return grossPay;
+        return this.grossPay;
     }
 
     public BigDecimal getNetPay() {
 
         BigDecimal deductions = calculateDeductions();
-        this.netPay = grossPay.subtract(grossPay.multiply(deductions)).setScale(2, RoundingMode.HALF_UP);
+        this.netPay = this.grossPay.subtract(this.grossPay.multiply(deductions));
+        this.netPay = this.netPay.setScale(2, RoundingMode.HALF_UP);
 
         return this.netPay;
     }
@@ -39,8 +40,9 @@ public class Employee {
 
     public void applySalaryAdjustment(Performance performance) {
 
-        BigDecimal adjustment = grossPay.multiply(performance.getAdjustmentPercent());
-        this.grossPay = grossPay.add(adjustment).setScale(2, RoundingMode.HALF_UP);
+        BigDecimal adjustment = this.grossPay.multiply(performance.getAdjustmentPercent());
+        this.grossPay = this.grossPay.add(adjustment);
+        this.grossPay = this.grossPay.setScale(2, RoundingMode.HALF_UP);
 
     }
 }

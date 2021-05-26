@@ -9,6 +9,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeTest {
 
+    /*
+     * JUnit has specific annotations in case we want to run
+     * some methods before or after our tests. They are:
+     *   BeforeEach -> runs before each one of the tests
+     *   BeforeAll -> runs once, before all tests
+     *   AfterEach -> runs after each one of the tests
+     *   AfterAll -> runs once, after all tests
+     */
+
     @Test
     public void should_calculate_net_pay_to_gross_pay_under_2000() {
 
